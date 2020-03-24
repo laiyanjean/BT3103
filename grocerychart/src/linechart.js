@@ -23,6 +23,12 @@ export default{
           
         },
         options: {
+            title:{
+              display:true,
+              text:'Line Chart',
+              fontColor:'Black',
+              fontSize:15
+            },
             scales:{
                 yAxes:[{
                     ticks:{

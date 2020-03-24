@@ -5,6 +5,7 @@
             <h2 v-on:click="item.show = !item.show">{{item.name}}</h2>
             <img v-bind:src="item.image" v-show="item.show"/>
             <buttonComponent></buttonComponent>
+            <br>
             <button name="delete" v-bind:id="item.id" v-on:click="deleteItem(index,item)">Delete</button>
         </li>
     </ul>
@@ -17,28 +18,34 @@ import database from '../firebase.js'
 export default {
   data(){
     return{
-        itemsList: []
-        }
+        itemsList: [],
+    }
   },
   components:{
-    'buttonComponent':ButtonComponent
+    'buttonComponent':ButtonComponent,
   },
   methods:{
+    /** W8 Problem 3
+     * Read and display data from firebase
+     */
     fetchItems:function(){
       let item={}
       //Get all the items from DB
       database.collection('items').get().then((querySnapShot)=>{
         //Loop through each item
         querySnapShot.forEach(doc=>{
-            console.log(doc.id+"==>"+doc.data())
-            item=doc.data()
-            item.show=false
-            item.id=doc.id
-            this.itemsList.push(item)
+          console.log(doc.id+"==>"+doc.data())
+          item=doc.data()
+          item.show=false
+          item.id=doc.id
+          this.itemsList.push(item)
         })
       })
       
     },
+    /** W8 Problem 4
+     * Delete Item from Database
+     */
     deleteItem:function(index,item){
       //Deleting from DB
       database.collection('items').doc(item.id).delete()
@@ -46,13 +53,12 @@ export default {
       this.itemsList.splice(index,1)
       //Msg to be displayed. Can be made as an alert
       console.log("Item Deleted Successfully")
-    }
-    
+    },
   },
   //Lifecycle hook
   created(){
-      this.fetchItems()
-    }
+    this.fetchItems()
+  }
 }
 </script>
 

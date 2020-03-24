@@ -1,6 +1,6 @@
-import {Bar} from 'vue-chartjs'
+import {Pie} from 'vue-chartjs'
 export default{
-    extends:Bar,
+    extends:Pie,
     data: () => ({
         chartdata: {
           labels: ['January', 'February','March','April'],
@@ -8,37 +8,18 @@ export default{
             {
               label: 'Sales',
               data: [400, 300,150,100],
-              backgroundColor:'#AA6',
-              borderWidth:0.5,
-              borderColor:"#000"
-            },
-            {
-                label: 'Sales2',
-                data: [40, 30,10,15],
-                backgroundColor:'#7C1'
-              }
+              backgroundColor:['aqua','lightgreen','red','orange'],
+            }
           ]
           
         },
-        
         options: {
             title:{
                 display:true,
-                text:'Bar Chart',
+                text:'Pie Chart',
                 fontColor:'Black',
                 fontSize:15
 
-            },
-            legend:{
-                position:'bottom'
-            },
-            layout:{
-                padding:{
-                    left: 5,
-                    right: 0,
-                    top: 0,
-                    bottom: 5
-                }
             },
             scales:{
                 yAxes:[{
@@ -47,7 +28,15 @@ export default{
                     }
 
                 }]
-            }
+            },
+            layout:{
+              padding:{
+                  left: 5,
+                  right: 0,
+                  top: 0,
+                  bottom: 10
+              }
+          }
           
         }
       }),

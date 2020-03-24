@@ -21,6 +21,13 @@ export default{
           
         },
         options: {
+            title:{
+              display:true,
+              text:'Doughnut Chart',
+              fontColor:'Black',
+              fontSize:15
+
+            },
             scales:{
                 yAxes:[{
                     ticks:{

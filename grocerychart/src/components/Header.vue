@@ -40,6 +40,7 @@ h1{
     color:ivory;
     background: rgb(122, 63, 100);
     font-size: 30px;
+    text-align: center;
 }
 nav{
     background: rgb(122, 63, 100);
